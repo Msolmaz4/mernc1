@@ -40,7 +40,7 @@ const register = async(req,res)=>{
      })
         
     } catch (error) {
-        res.status(500).json({msg:error.message})
+       return res.status(500).json({msg:error.message})
         
     }
 }
@@ -49,9 +49,31 @@ const register = async(req,res)=>{
 
 const login = async(req,res)=>{
     try {
+
+         const {email,password} =req.body
+         //kontroller yapilir email
+         const user =await AuthSchema.findOne(email)
+         
+         if(!user){
+         return  res.status(500).json({msg:'lulanici yok'})
+         }
+         //password kontrol
+         const passwordCompare = await bcrypt.compare(password,user.password)
+
+         if(!passwordCompare){
+            return res.status(500).json({msg:'password yanlis'})
+         }
+         const token  = jwt.sign({id:user_id},'SECRET KEY',{expiresIn:'1h'})
+
+         res.status(200).json({
+            status:'ok',
+            user,
+            token
+         })
+
         
     } catch (error) {
-        
+        return res.status(500).json({msg:'login bak'})
     }
 }
 
