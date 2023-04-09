@@ -5,9 +5,25 @@ const authReducer = (state ={auth:null},action )=>{
             //loaclstore kayetmek icin 
             localStorage.setItem('auth',JSON.stringify(action.payload))
             return{
+                ...state,//tum state dolasmak gerekir
                 auth:action.payload
             }
-    
+            case 'LOGIN':
+                
+                localStorage.setItem('auth',JSON.stringify(action.payload))
+                return{
+                     ...state,
+                    auth:action.payload
+                }
+
+         case 'LOGOUT':
+                //loaclstore temiyleriz
+                localStorage.clear()
+                return{
+                     ...state,
+                    auth:null
+                }
+                
         default:
             return
     }
