@@ -6,9 +6,9 @@ const Auth = () => {
         <div className='w-1/3 bg-white p-3'>
             <h1>POST PAYLAS</h1>
             <div className='flex flex-col space-y-5'>
-                <input type="text" placeholder='Username' className='border p-2 rounded-md outline-none' />
-                <input type="email" placeholder='email' className='' />
-                <input type="password" placeholder='password' className='' />
+                <input type="text" placeholder='Username' className='input-style' />
+                <input type="email" placeholder='email' className='input-style' />
+                <input type="password" placeholder='password' className='input-style' />
             </div>
             <div className='cursor-pointer hover:bg-indigo-900 w-full p-2 text-center bg-indigo-600 text-white rounded-md'>KAYIT OL </div>
       
