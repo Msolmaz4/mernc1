@@ -19,7 +19,7 @@ const register = async(req,res)=>{
         }
         //bundan sonra passwordu saglamlastiriz
 
-        const passwordHash = await bcrypt.hash(password,12)
+        const passwordHash = await bcrypt.hash(password,10)
 
         //email olup oladigini kontrol ederiz alltaki foksiyonu internet aldim kolay olsun diye 
         //email bu foksiyona gondeririz
@@ -79,7 +79,7 @@ const login = async(req,res)=>{
 
 //email olup olmadigini kontrol ederiz
 
-function ValidateEmail(mail) 
+function ValidateEmail(email) 
 {
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myForm.emailAddr.value))
   {

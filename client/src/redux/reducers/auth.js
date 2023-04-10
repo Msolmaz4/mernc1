@@ -1,5 +1,5 @@
 
-const authReducer = (state ={auth:null},action )=>{
+const authReducer = (state = {auth:null},action )=>{
     switch (action.type) {
         case 'REGISTER':
             //loaclstore kayetmek icin 
@@ -25,7 +25,7 @@ const authReducer = (state ={auth:null},action )=>{
                 }
                 
         default:
-            return
+            return state
     }
 }
 export default authReducer

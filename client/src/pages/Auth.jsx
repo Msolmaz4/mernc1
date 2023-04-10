@@ -1,14 +1,29 @@
 import React, { useState } from 'react'
-
+import { loginAction, registerAction } from './../redux/actions/auth'
+//redux calistirmak icin usedispatch 
+import { useDispatch } from 'react-redux'
 const Auth = () => {
 
 const [signUp,setSignUp] = useState(true)
 const [authData,setAuthData] = useState({username:'',email:'',password:''})
 
+const dispatch = useDispatch()
+
 const onChangeFuc = (e)=>{
     setAuthData({...authData,[e.target.name] : e.target.value})
 
 }
+  
+const authFunc = ()=>{
+    //burada dikkat edilecek once ne yapacam onun icin register basladim
+    if(signUp){
+     dispatch(registerAction(authData))
+    }
+    else{
+       dispatch(loginAction(authData))
+    }
+}
+
 console.log('autDta',authData)
 
   return (
@@ -16,9 +31,9 @@ console.log('autDta',authData)
         <div className='w-1/3 bg-white p-3 mb-5'>
             <h1 className='text-2xl text-indigo-600 font-bold text-center'>{signUp ? 'register' : 'login'}</h1>
             <div className='flex flex-col space-y-5'>
-             { signUp && <input value={authData.username} name='username' onChange={onChangeFuc} type="text" placeholder='Username' className='input-style' />}
-                <input value={authData.email} name='email' onChange={onChangeFuc} type="email" placeholder='email' className='input-style' />
-                <input value={authData.password} name='password' onChange={onChangeFuc} type="password" placeholder='password' className='input-style' />
+             { signUp && <input value={authData.username} name='username' onChange={onChangeFuc} type="text" placeholder='Username' className='input-style'/>}
+                <input value={authData.email} name='email' onChange={onChangeFuc} type="email" placeholder='email' className='input-style'/>
+                <input value={authData.password} name='password' onChange={onChangeFuc} type="password" placeholder='password' className='input-style'/>
             </div>
             <div className='text-red-500 text-xs cursor-pointer mb-4'>
                 {
@@ -29,7 +44,7 @@ console.log('autDta',authData)
                 
                
             </div>
-            <div className='cursor-pointer hover:bg-indigo-900 w-full p-2 text-center bg-indigo-600 text-white rounded-md'>{signUp ? 'KAYIT OL ':'girisYap'} </div>
+            <div onClick={authFunc} className='cursor-pointer hover:bg-indigo-900 w-full p-2 text-center bg-indigo-600 text-white rounded-md'>{signUp ? 'KAYIT OL ':'girisYap'} </div>
       
         </div>
         
