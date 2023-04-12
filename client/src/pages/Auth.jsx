@@ -11,9 +11,9 @@ const dispatch = useDispatch()
 
 const onChangeFuc = (e)=>{
     setAuthData({...authData,[e.target.name] : e.target.value})
-
 }
   
+
 const authFunc = ()=>{
     //burada dikkat edilecek once ne yapacam onun icin register basladim
     if(signUp){
