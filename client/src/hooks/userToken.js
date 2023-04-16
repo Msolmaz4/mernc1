@@ -1,17 +1,17 @@
 //bu localstroge kaydettigim tokeni dondurmeyi yaptik
-import React, {useState} from 'react'
+import {useState,useEffect} from 'react'
 
-const userToken = () => {
+const UserToken = () => {
 
     const [token,setToken] = useState('')
 
-    use
+    useEffect(()=>{
+          setToken(JSON.parse(localStorage.getItem('auth')))
+    },[])
     
 
 
-  return (
-    <div>userToken</div>
-  )
+  return [token]
 }
 
-export default userToken
+export default UserToken

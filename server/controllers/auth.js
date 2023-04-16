@@ -7,13 +7,13 @@ const register = async(req,res)=>{
     try {
          //bunlar front tarafinfadn geliyor req body 
         const {username,password,email} = req.body
-
+console.log(username)
         //sonra kontroller yapariz email olup olmadigini
 
         const user = await AuthSchema.findOne(email)
-        if(user){
-            return res.status(500).json({msg:'boyle bir kullanici yaten var'})
-        }
+     if(user){
+          return res.status(500).json({msg:'boyle bir kullanici yaten var'})
+       }
         if(password.length < 6){
             return res.status(500).json({msg:'sifre 6 karakterden eksik'})
         }
@@ -24,8 +24,8 @@ const register = async(req,res)=>{
         //email olup oladigini kontrol ederiz alltaki foksiyonu internet aldim kolay olsun diye 
         //email bu foksiyona gondeririz
 
-        if(ValidateEmail(email)){
-            return res.status(500).json({msg:'Bu email formatinda degil'})}
+       // if(ValidateEmail(email)){
+         //   return res.status(500).json({msg:'Bu email formatinda degil'})}
 
      // simdi yeni bir neww User
      const newUser =await AuthSchema.create({username,email,password:passwordHash})
@@ -40,7 +40,7 @@ const register = async(req,res)=>{
      })
         
     } catch (error) {
-       return res.status(500).json({msg:error.message})
+       return res.status(500).json({msg:res.error})
         
     }
 }
