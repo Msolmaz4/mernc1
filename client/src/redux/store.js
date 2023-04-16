@@ -2,6 +2,7 @@ import   { applyMiddleware, combineReducers, createStore }  from "redux"
 import thunk from "redux-thunk"
 import { composeWithDevTools } from 'redux-devtools-extension';
 import authReducer from "./reducers/auth";
+import modalReducer from "./reducers/modal";
 
 
 const initialState ={
@@ -9,7 +10,8 @@ const initialState ={
 }
 
 const reducers = combineReducers({
-   auth: authReducer
+   auth: authReducer,
+   modal:modalReducer
 })
 
 
