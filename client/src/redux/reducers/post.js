@@ -18,7 +18,7 @@ case "DELETE_POST":
                   posts: [state.posts.filter((post)=> post._id !== action.payload)]
                 };            
     default:
-      break;
+      return state
   }
 };
 
